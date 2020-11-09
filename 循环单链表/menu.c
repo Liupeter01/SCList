@@ -49,7 +49,7 @@ void Menu(SClist* list)
                                         printf("请输入需要查找的数据：>");
                                         ElemType item = 0;
                                         scanf("%d", &item);
-                                        LinkNode* node = LocateElemByNum(&(list->first), item);
+                                        LinkNode* node = LocateElemByNum(list, item);
                                         if (node == NULL)
                                         {
                                                   printf("查找的数据%d在链表中不存在\n", item);
