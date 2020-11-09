@@ -23,10 +23,11 @@ LinkNode* LocateElemByNum(SClist* L, ElemType key) //按照值进行查找
 		  {
 					printf("单链表没有被创建，查找失败\n");
 					return NULL;
+
 		  }
 		  LinkNode* p = L->first->next;			  //首元节点
 		  for (p; p != L->first && p->data != key; p = p->next);
-		  return p;
+		  return p == L->first ? NULL : p;					//需要确定是否找到
 }
 
 void SCListPushBack(SClist* SL)	//循环单链表的尾插法
