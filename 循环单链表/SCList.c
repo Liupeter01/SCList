@@ -74,9 +74,12 @@ void SCListPushFront(SClist* SL)//循环单链表的头插法
 							  SL->last->next = SL->first;			  //最后一个节点的下一个节点指向头结点
 							  SL->amount++;					//结点数增加了
 					}
-					s->next = SL->first->next;				  //插入结点的下一个结点指向当前的首元节点
-					SL->first->next = s;					//更新新插入的s结点为新的首元节点
-					SL->amount++;					//结点数增加了
+					else
+					{
+							  s->next = SL->first->next;				  //插入结点的下一个结点指向当前的首元节点
+							  SL->first->next = s;					//更新新插入的s结点为新的首元节点
+							  SL->amount++;					//结点数增加了
+					}
 		  }
 }
 
