@@ -189,6 +189,77 @@ void SCListPopBack(SClist* SL)		//循环单链表的尾部删除
 		  SL->amount--;					//删除后数量自减
 }
 
+BOOL SCListDeleteByPos(SClist* SL, int pos, ElemType* e)			//单链表的通过位序删除
+{
+		  if (pos <1 && pos>SL->amount)
+		  {
+					printf("循环单链表无法进行插入，输入的位序非法");
+					return FALSE;
+		  }
+		  if (SL->amount == 0 || SL->first->next == SL->first)
+		  {
+					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return FALSE;
+		  }
+		  LinkNode* px = SL->first->next;		  // 首元节点
+		  int counter = 1;
+		  while (px != SL->first && counter++ < pos - 1)				  //循环链表，需要找到尾部节点
+		  {
+					px = px->next;
+		  }
+		  LinkNode* ptemp = px->next;	  //删除结点
+		  *e = ptemp->data;
+		  if (ptemp == SL->first)			  //删除节点为尾部节点
+		  {
+					SL->last = px;				  // px作为尾部结点
+					SL->last->next = SL->first;	  //构建循环
+		  }
+		  else
+		  {
+					px->next = ptemp->next;		  //跳过ptemp
+		  }
+		  free(ptemp);
+		  SL->amount--;
+		  return TRUE;
+}
+
+BOOL SCListDeleteByNum(SClist* SL, ElemType key, ElemType* e)	//单链表的通过数值删除
+{
+		  if (SL->amount == 0 || SL->first->next == SL->first)
+		  {
+					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return FALSE;
+		  }
+		  LinkNode* px = SL->first->next;		  // 首元节点
+		  LinkNode* pre = NULL;					  //前驱节点
+		  while (px != SL->first && px->data !=key)				  //循环链表，需要找到尾部节点
+		  {
+					pre = px;
+					px = px->next;
+		  }
+		  if (px == SL->first)
+		  {
+					printf("没有找到需要进行删除的数据\n");
+					return FALSE;		//没有找到
+		  }
+		  else
+		  {
+					*e = px->data;				  //提取数值
+					if (px == SL->first)			  //删除节点为尾部节点
+					{
+							  SL->last = pre;				  // pre(px的前驱)作为尾部结点
+							  SL->last->next = SL->first;	  //构建循环
+					}
+					else
+					{
+							  pre->next = px->next;		  //跳过px
+					}
+					free(px);
+					SL->amount--;
+					return TRUE;
+		  }
+}
+
 void DisplayLinkList(SClist* list)//循环单链表的输出
 {
 		  LinkNode* p = list->first->next;		  //跳过首元节点

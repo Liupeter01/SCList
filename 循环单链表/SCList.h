@@ -52,5 +52,5 @@ void SCListInsertFrontByPos(SClist* SL, int pos, ElemType e);		  // 循环单链表按
 //////////////////////////////////////////////////////////删除系列///////////////////////////////////////////////////
 void SCListPopFront(SClist* SL);			//循环单链表的头部删除
 void SCListPopBack(SClist* SL);		//循环单链表的尾部删除
-BOOL SListDeleteByPos(SClist* SL, int pos, ElemType* e);			//单链表的通过位序删除
-BOOL SListDeleteByNum(SClist* SL, ElemType key, ElemType* e);			//单链表的通过数值删除
+BOOL SCListDeleteByPos(SClist* SL, int pos, ElemType* e);			//单链表的通过位序删除
+BOOL SCListDeleteByNum(SClist* SL, ElemType key, ElemType* e);			//单链表的通过数值删除

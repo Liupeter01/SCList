@@ -68,10 +68,10 @@ void Menu(SClist* list)
                                         ElemType item;               //存放删除的数据
                                         int pos = 0;
                                         scanf("%d", &pos);
-                                      /*  if (!SListDeleteByPos(list, pos, &item))
+                                        if (!SCListDeleteByPos(list, pos, &item))
                                         {
                                                   printf("数据删除失败\n");
-                                        }*/
+                                        }
                                         break;
                               }
                               case 10://删除指定的数据元素
@@ -80,10 +80,10 @@ void Menu(SClist* list)
                                         ElemType num;               //删除的数据
                                         ElemType item;               //存放删除的数据
                                         scanf("%d", &num);
-                                   /*     if (!SListDeleteByNum(list, num, &item))
+                                        if (!SCListDeleteByNum(list, num, &item))
                                         {
                                                   printf("数据删除失败\n");
-                                        }*/
+                                        }
                                         break;
                               }
                               case 11:  break;             //快速排序(也可以选择堆排序)
