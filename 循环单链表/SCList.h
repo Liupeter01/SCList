@@ -34,6 +34,7 @@ typedef struct SClist
 
 LinkNode* CreateNode(ElemType x);		//节点创建
 void DisplayLinkList(SClist *list);	//循环单链表的输出
+LinkNode* LocateElemByNum(SClist* list, ElemType key); //按照值进行查找 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void InitSCList(SClist* list);            //循环链表的初始化操作
@@ -46,6 +47,7 @@ void SListReverse(SClist* SL);			//链表的反转
 void SCListPushBack(SClist* SL);	//循环单链表的尾插法
 void SCListPushFront(SClist* SL);//循环单链表的头插法
 void SCListInsertBackByPos(SClist* SL, int pos, ElemType e);		  // 循环单链表按照位序尾插
+void SCListInsertFrontByPos(SClist* SL, int pos, ElemType e);		  // 循环单链表按照位序前插
 
 //////////////////////////////////////////////////////////删除系列///////////////////////////////////////////////////
 void SCListPopFront(SClist* SL);			//循环单链表的头部删除
