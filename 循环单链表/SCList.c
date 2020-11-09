@@ -101,6 +101,46 @@ void SCListInsertBackByPos(SClist* SL, int pos, ElemType e)		  // 循环单链表按照
 		  SL->amount++;				  // 结点数量自增
 }
 
+void SCListPopFront(SClist* SL)		//循环单链表的头部删除
+{
+		  if (SL->amount == 0 || SL->first->next == SL->first)
+		  {
+					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return;
+		  }
+		  LinkNode* px = SL->first->next;		  //访问首元节点
+		  if (px->next == SL->first)			  //首元节点的就是尾结点
+		  {
+					free(px);
+					SL->last = SL->first;					//头结点为尾部
+					SL->last->next = SL->first;	  //形成自循环
+		  }
+		  else
+		  {
+					SL->first->next = px->next;
+					free(px);
+		  }
+		  SL->amount--;					//删除后数量自减
+}
+
+void SCListPopBack(SClist* SL)		//循环单链表的尾部删除
+{
+		  if (SL->amount == 0 || SL->first->next == SL->first)
+		  {
+					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return;
+		  }
+		  LinkNode* px = SL->first->next;		  //首元节点
+		  while (px->next != SL->last)			  //寻找尾部节点的前驱节点
+		  {
+					px = px->next;
+		  }
+		  free(SL->last);				//删除尾部结点
+		  SL->last = px;				//尾部结点为删除结点的前驱结点
+		  SL->last->next = SL->first;			  //设置尾结点的next域为头结点
+		  SL->amount--;					//删除后数量自减
+}
+
 void DisplayLinkList(SClist* list)//循环单链表的输出
 {
 		  LinkNode* p = list->first->next;		  //跳过首元节点

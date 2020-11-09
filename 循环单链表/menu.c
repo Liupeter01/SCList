@@ -30,8 +30,8 @@ void Menu(SClist* list)
                               case 1:SCListPushBack(list); break; //数据初始化尾部插入
                               case 2: SCListPushFront(list); break; //数据初始化头部插入
                               case 3:DisplayLinkList(list); break;
-                              case 4:; break;
-                              case 5:; break;
+                              case 4: SCListPopBack(list); break;
+                              case 5: SCListPopFront(list); break;
                               case 6:    //数据的位序插入，当前默认使用后插法
                               {
                                         printf("请输入需要插入的数据：>");
