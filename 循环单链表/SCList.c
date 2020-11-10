@@ -292,3 +292,43 @@ void SCListClear(SClist* SL)			//链表的清空
 {
 
 }
+
+void SCListReverse(SClist* SL)			//链表的反转
+{
+
+}
+
+void Swap(ElemType* a1, ElemType* a2)
+{
+		  ElemType temp = *a1;
+		  *a1 = *a2;
+		  *a2 = temp;
+}
+
+void  SCListSort(SClist* list, LinkNode* left, LinkNode* right)			//排序
+{
+		  if (list == NULL || list->amount ==0)
+		  {
+					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return;
+		  }
+		  if (left !=  list->first && right !=NULL)					  //开始的left结点不允许是头结点
+		  {
+					LinkNode* pre = NULL;					//记录前驱结点
+					LinkNode* islow = left;		  //慢速指针
+					LinkNode* jfast = islow->next;				//快速指针
+					while (jfast != list->first)			//由于是循环链表因此循环的暂停条件为头结点
+					{
+							  if (islow->data > jfast->data)
+							  {
+										pre = islow;
+										islow = islow->next;
+										Swap(&(islow->data), &(jfast->data));
+							  }
+							  jfast = jfast->next;
+					}
+					Swap(&(left->data), &(islow->data));
+					SCListSort(list, left, pre);
+					SCListSort(list, islow->next, right);
+		  }
+}

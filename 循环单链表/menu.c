@@ -86,7 +86,7 @@ void Menu(SClist* list)
                                         }
                                         break;
                               }
-                              case 11:  break;             //快速排序(也可以选择堆排序)
+                              case 11:SCListSort(list, list->first->next, list->last);  break;             //快速排序(也可以选择堆排序)
                               case 12:  break;            //逆转
                               case 13:  break;
                               case 14:SCListDistroy(list); printf("\n链表已经被摧毁，即将退出\n"); return; break;

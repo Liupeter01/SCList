@@ -38,10 +38,10 @@ LinkNode* LocateElemByNum(SClist* list, ElemType key); //按照值进行查找
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void InitSCList(SClist* list);            //循环链表的初始化操作
-void  SListSort(LinkNode* left, LinkNode* right);			//排序
+void  SCListSort(SClist*list,LinkNode* left, LinkNode* right);			//排序
 void SCListDistroy(SClist* SL);					  //链表的摧毁
 void SCListClear(SClist* SL);			//链表的清空
-void SListReverse(SClist* SL);			//链表的反转
+void SCListReverse(SClist* SL);			//链表的反转
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void SCListPushBack(SClist* SL);	//循环单链表的尾插法
