@@ -295,7 +295,38 @@ void SCListClear(SClist* SL)			//链表的清空
 
 void SCListReverse(SClist* SL)			//链表的反转
 {
-
+		  if (SL == NULL || SL->amount == 0 )
+		  {
+					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return;
+		  }
+		  if (SL->amount == 0 || SL->amount == 1)
+		  {
+					return;		
+		  }
+		  else
+		  {
+					SL->last = SL->first->next;			//首元节点作为新的尾结点
+					LinkNode* pfirst = SL->first->next;					  //首元节点
+					LinkNode* px = pfirst->next;						  //首元节点的下一个结点
+					while (px != SL->first)			//px停止时则到达了尾部结点
+					{
+							  LinkNode* ptemp = px;					  //临时记录
+							  if (ptemp->next == SL->first)			  //下一个结点为头结点
+							  {
+										px->next = pfirst;
+										SL->first->next = px;
+										break;
+							  }
+							  else
+							  {
+										px = px->next;
+										ptemp->next = pfirst;
+										pfirst = ptemp;
+							  }
+					}
+					SL->last->next = SL->first;
+		  }
 }
 
 void Swap(ElemType* a1, ElemType* a2)
@@ -307,9 +338,13 @@ void Swap(ElemType* a1, ElemType* a2)
 
 void  SCListSort(SClist* list, LinkNode* left, LinkNode* right)			//排序
 {
-		  if (list == NULL || list->amount ==0)
+		  if (list == NULL)
 		  {
 					printf("循环链表为空表，没有元素，无法进行删除\n");
+					return;
+		  }
+		  if (list->amount == 0 || list->amount == 1)
+		  {
 					return;
 		  }
 		  if (left !=  list->first && right !=NULL)					  //开始的left结点不允许是头结点

@@ -87,8 +87,8 @@ void Menu(SClist* list)
                                         break;
                               }
                               case 11:SCListSort(list, list->first->next, list->last);  break;             //快速排序(也可以选择堆排序)
-                              case 12:  break;            //逆转
-                              case 13:  break;
+                              case 12:  SCListReverse(list); break;            //逆转
+                              case 13:SCListClear(list); break;
                               case 14:SCListDistroy(list); printf("\n链表已经被摧毁，即将退出\n"); return; break;
                               case 15:system("cls"); break;
                               default:printf("输入错误请重新输入\n"); break;
