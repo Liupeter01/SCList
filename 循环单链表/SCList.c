@@ -290,7 +290,17 @@ void SCListDistroy(SClist* SL)				  //链表的摧毁
 
 void SCListClear(SClist* SL)			//链表的清空
 {
-
+		  LinkNode* p = SL->first->next;		//指向首元节点
+		  while (p != SL->first)		//不是头结点时
+		  {
+					LinkNode* temp = p;
+					p = p->next;
+					free(temp);
+		  }
+		  free(SL->first);
+		  SL->last = SL->first;			//尾结点即为头结点
+		  SL->last->next = SL->first;	//形成自循环
+		  SL->amount = 0;
 }
 
 void SCListReverse(SClist* SL)			//链表的反转
